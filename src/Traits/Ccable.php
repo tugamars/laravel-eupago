@@ -27,7 +27,7 @@ trait Ccable
      * @return array
      * @throws \Exception
      */
-    public function createMbReference(float $value, string $id, string $email, string $backUrl, bool $notify=false)
+    public function createCcReference(float $value, string $id, string $email, string $backUrl, bool $notify=false)
     {
         $cc = new CC(
             $value,
