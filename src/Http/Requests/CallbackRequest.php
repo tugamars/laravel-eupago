@@ -8,7 +8,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
 
-abstract class CallbackRequest extends FormRequest
+class CallbackRequest extends FormRequest
 {
 
     /**
