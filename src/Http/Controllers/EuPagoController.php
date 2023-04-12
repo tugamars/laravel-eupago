@@ -8,7 +8,7 @@ use CodeTech\EuPago\Events\MBWayReferencePaid;
 use CodeTech\EuPago\Http\Requests\CallbackRequest;
 use CodeTech\EuPago\Http\Requests\MbCallbackRequest;
 use CodeTech\EuPago\Http\Requests\MbWayCallbackRequest;
-use CodeTech\EuPago\Models\CCTransaction;
+use CodeTech\EuPago\Models\CcTransaction;
 use CodeTech\EuPago\Models\MbReference;
 use CodeTech\EuPago\Models\MbwayReference;
 use Illuminate\Http\Request;
@@ -93,7 +93,7 @@ class EuPagoController extends Controller
     {
         $validatedData = $request->validated();
 
-        $reference = CCTransaction::where('reference', $validatedData['referencia'])
+        $reference = CcTransaction::where('reference', $validatedData['referencia'])
             ->where('value', $validatedData['valor'])
             ->where('state', 0)
             ->first();

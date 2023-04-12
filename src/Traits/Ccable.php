@@ -3,7 +3,7 @@
 namespace CodeTech\EuPago\Traits;
 
 use CodeTech\EuPago\CC\CC;
-use CodeTech\EuPago\Models\CCTransaction;
+use CodeTech\EuPago\Models\CcTransaction;
 use CodeTech\EuPago\Models\MbReference;
 
 trait Ccable
@@ -13,7 +13,7 @@ trait Ccable
      */
     public function ccReferences()
     {
-        return $this->morphMany(CCTransaction::class, 'ccable');
+        return $this->morphMany(CcTransaction::class, 'ccable');
     }
 
     /**

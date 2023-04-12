@@ -4,7 +4,7 @@ namespace CodeTech\EuPago\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CCTransaction extends Model
+class CcTransaction extends Model
 {
     /**
      * @inheritdoc

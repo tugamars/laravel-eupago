@@ -2,7 +2,7 @@
 
 namespace CodeTech\EuPago\Events;
 
-use CodeTech\EuPago\Models\CCTransaction;
+use CodeTech\EuPago\Models\CcTransaction;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -15,16 +15,16 @@ class CCTransactionPaid
     /**
      * The MbReference reference object.
      *
-     * @var CCTransaction
+     * @var CcTransaction
      */
     public $reference;
 
     /**
      * MBReferencePaid constructor.
      *
-     * @param CCTransaction $reference
+     * @param CcTransaction $reference
      */
-    public function __construct(CCTransaction $reference)
+    public function __construct(CcTransaction $reference)
     {
         $this->reference = $reference;
     }
