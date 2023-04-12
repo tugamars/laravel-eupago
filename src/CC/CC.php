@@ -109,10 +109,9 @@ class CC extends EuPago
     public function create(): array
     {
         $client = new Client(['base_uri' => $this->getBaseUri(), 'headers'=>[
-            'Authorization'=>config('eupago.api_key')
+            'Authorization'=>"ApiKey " . config('eupago.api_key'),
+            'Content-Type'=>"application/json"
         ]]);
-
-
 
         try {
             $response = $client->post(self::URI, $this->getParams());
@@ -153,21 +152,24 @@ class CC extends EuPago
     protected function getParams(): array
     {
         return [
-            'payment'=>[
-                'identifier'=>$this->id,
-                'amount'=>[
-                    'value'=>$this->value,
-                    'currency'=>config('eupago.currency'),
+            'form_params'=>[
+                'payment'=>[
+                    'identifier'=>$this->id,
+                    'amount'=>[
+                        'value'=>$this->value,
+                        'currency'=>config('eupago.currency'),
+                    ],
+                    'successUrl'=>config('eupago.cc_success_url')."?order=".$this->id,
+                    'failUrl'=>config('eupago.cc_fail_url')."?order=".$this->id,
+                    'backUrl'=>$this->backUrl,
+                    'lang'=>strtoupper(App::getLocale())
                 ],
-                'successUrl'=>config('eupago.cc_success_url')."?order=".$this->id,
-                'failUrl'=>config('eupago.cc_fail_url')."?order=".$this->id,
-                'backUrl'=>$this->backUrl,
-                'lang'=>strtoupper(App::getLocale())
-            ],
-            'customer'=>[
-                'notify'=>$this->notify,
-                'email'=>$this->email
+                'customer'=>[
+                    'notify'=>$this->notify,
+                    'email'=>$this->email
+                ]
             ]
+
         ];
     }
 }
